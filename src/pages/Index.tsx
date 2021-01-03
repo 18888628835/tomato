@@ -1,60 +1,75 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ajax from "../config/axiosConfig";
 import Header from "../components/header/Header";
+import Main from "../components/main/main";
+import TaskDescription from "../components/main/task_description";
 import TodoList from "../components/main/todo_list";
-const Index: FC = () => {
+
+const Index = () => {
   const [user, setUser] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [todo, setTodo] = useState<any[]>([]);
+  const [description, setDescription] = useState("");
+  const [todoList, setTodoList] = useState<any[]>([]);
+  const [edit, setEdit] = useState<number[]>([]);
   const onClick = (prams: string) => {
     setUser(prams);
+    setTodoList([]);
   };
+  //第一次渲染的时候获取用户名字跟todo信息
   useEffect(() => {
-    getMe();
-    getTodo();
+    getUserName();
+    getTodoList();
   }, []);
-  const getMe = async () => {
-    //获取用户信息
-    try {
-      const response = await ajax("/me");
-      setUser(response.data.account);
-    } catch (error) {
-      console.log(error.response.data.errors);
-    }
+  /**
+   * getUserName用来获取用户姓名
+   * onAddTask用来向服务器提交任务
+   * getTodoList用来获取任务列表
+   * onUpdateTask就是修改任务的各种情况
+   */
+  const getUserName = async () => {
+    const response = await ajax("/me").then(null, (error) =>
+      console.log(error.response.data.errors)
+    );
+    if (response) setUser(response.data.account);
   };
-  //按enter键后触发提交事件
-  const onEnter: React.KeyboardEventHandler<HTMLInputElement> = async (e) => {
-    if (e.key === "Enter" && description !== "") {
-      onSubmit();
-    }
-  };
-  const getTodo = async () => {
-    //获取任务列表
-    await ajax.get("todos").then((response) => {
-      setTodo(response.data.resources);
-    });
-  };
-  const onSubmit = async () => {
-    //提交信息
+
+  const onAddTask = async () => {
     const response = await ajax
       .post("todos", {
         description: description,
       })
-      .then(null, (error) => {
-        console.log(error);
-      });
-    if (response) setTodo([response.data.resource, ...todo]);
-    setDescription("");
+      .then(null, (error) => console.log(error));
+    if (response) {
+      setTodoList([response.data.resource, ...todoList]);
+      setDescription("");
+    }
+  };
+  const getTodoList = async () => {
+    const response = await ajax
+      .get("todos")
+      .then(null, (error) => console.log(error));
+    if (response) setTodoList(response.data.resources);
+  };
+  const onUpdateTask = async (id: number, params: unknown) => {
+    const response = await ajax.put(`todos/${id}`, params);
+    const newList = todoList.map((item) => {
+      if (item.id === id) {
+        return response.data.resource;
+      }
+      return item;
+    });
+    await setTodoList(newList);
   };
 
   return (
     <>
       <Header {...{ user, onClick }} />
-      <main>
-        <TodoList
-          {...{ description, onEnter, onSubmit, setDescription, todo }}
-        />
-      </main>
+      <Main>
+        <div>123</div>
+        <div>
+          <TaskDescription {...{ description, setDescription, onAddTask }} />
+          <TodoList {...{ todoList, onUpdateTask, edit, setEdit }}></TodoList>
+        </div>
+      </Main>
     </>
   );
 };
