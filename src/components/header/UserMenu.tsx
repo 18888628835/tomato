@@ -4,7 +4,7 @@ import React, { FC } from "react";
 import { Link } from "react-router-dom";
 type P = {
   user: string;
-  onClick: (prams: string) => void;
+  onLogout: (prams: string) => void;
   className: string;
 };
 
@@ -14,7 +14,7 @@ const UserMenu: FC<P> = (props) => {
       <Menu.Item danger>
         <span
           onClick={() => {
-            props.onClick("");
+            props.onLogout("");
             localStorage.setItem("x-token", "");
           }}
         >

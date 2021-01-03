@@ -2,6 +2,8 @@ import React, { FC } from "react";
 import { Checkbox, Divider } from "antd";
 import styled from "styled-components";
 import { DeleteOutlined, EnterOutlined } from "@ant-design/icons";
+import { SET_EDIT } from "../custom/actionType";
+import { ParamsDispatch } from "../../config/type";
 const Wrapper = styled.div`
   overflow-y: auto;
   max-height: 445px;
@@ -9,7 +11,6 @@ const Wrapper = styled.div`
   > div {
     display: flex;
     border-bottom: 1px solid #3333;
-    border-top: 1px solid #3333;
     padding: 8px 0;
     &:hover {
       background-color: #fff3d2;
@@ -35,7 +36,7 @@ type P = {
   todoList: any[];
   onUpdateTask: (id: number, params: unknown) => void;
   edit: number[];
-  setEdit: (n: number[]) => void;
+  dispatch: (params: ParamsDispatch) => void;
 };
 const getUnDeleted = (data: any[]) => {
   return data.filter((d) => {
@@ -54,8 +55,7 @@ const getCompleted = (data: any[]) => {
 };
 
 const Todo_list: FC<P> = (props) => {
-  const { todoList, onUpdateTask, setEdit, edit } = props;
-
+  const { todoList, onUpdateTask, dispatch, edit } = props;
   const editInput = (description: string, id: number) => {
     return (
       <>
@@ -65,17 +65,19 @@ const Todo_list: FC<P> = (props) => {
           defaultValue={description}
           onKeyUp={(e) => {
             if (e.key === "Enter") {
-              console.log(999);
               onUpdateTask(id, { description: e.target.value });
-              setEdit([]);
+              dispatch({ type: SET_EDIT, formData: [] });
             }
+          }}
+          onBlur={(e) => {
+            onUpdateTask(id, { description: e.target.value });
           }}
         />
         <span>
           <EnterOutlined
             style={{ cursor: "pointer", color: "grey" }}
             onClick={(e) => {
-              setEdit([]);
+              dispatch({ type: SET_EDIT, formData: [] });
             }}
           />
           <DeleteOutlined
@@ -104,7 +106,7 @@ const Todo_list: FC<P> = (props) => {
           <span
             className="describe"
             onDoubleClick={() => {
-              setEdit([item.id]);
+              dispatch({ type: SET_EDIT, formData: [item.id] });
             }}
           >
             {edit[0] === item.id

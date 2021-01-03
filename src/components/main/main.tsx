@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 const Wrap = styled.main`
   padding: 20px 20px;
   height: 500px;
@@ -15,7 +14,7 @@ const Wrap = styled.main`
     margin-left: 10px;
   }
 `;
-const Main = (props: any) => {
+const Main = (props: { children: React.ReactNode }) => {
   return <Wrap>{props.children}</Wrap>;
 };
 

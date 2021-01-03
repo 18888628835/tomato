@@ -25,7 +25,7 @@ const SignUp = () => {
     password: "",
     password_confirmation: "",
   });
-  const onChange = (data: any) => {
+  const onChange = (data: Partial<Registration>) => {
     setSignUpData((signUpData: Registration) => {
       return { ...signUpData, ...data };
     });

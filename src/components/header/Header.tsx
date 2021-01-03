@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import UserMenu from "./UserMenu";
 const Wrapper = styled.header`
   padding: 0 64px;
   display: flex;
@@ -15,19 +14,11 @@ const Wrapper = styled.header`
     line-height: 40px;
   }
 `;
-type P = {
-  user: string;
-  onClick: (prams: string) => void;
-};
-const Header: FC<P> = (props) => {
+const Header: FC = (props) => {
   return (
     <Wrapper>
       <div className="logo">logo</div>
-      <UserMenu
-        className="userMenu"
-        user={props.user}
-        onClick={props.onClick}
-      />
+      {props.children}
     </Wrapper>
   );
 };

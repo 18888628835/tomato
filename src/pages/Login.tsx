@@ -35,7 +35,7 @@ const Login = () => {
       alert(error.response.data.errors);
     }
   };
-  const onChange = (obj: any) => {
+  const onChange = (obj: Partial<LoginMessage>) => {
     setLoginMessage((mes) => {
       return { ...mes, ...obj };
     });
