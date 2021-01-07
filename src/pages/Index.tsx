@@ -5,9 +5,10 @@ import Main from "../components/main/main";
 import TaskDescription from "../components/main/task_description";
 import TodoList from "../components/main/todo_list";
 import UserMenu from "../components/header/UserMenu";
-import Tomatoes from "../components/main/tomato";
 import useTodo from "../components/custom/useTodo";
 import { UPDATE_TASK } from "../components/custom/actionType";
+import Tomatoes from "../components/main/tomatoes";
+import { Divider } from "antd";
 const Index = () => {
   const [user, setUser] = useState<string>("");
   const {
@@ -30,10 +31,12 @@ const Index = () => {
   }, []);
 
   const getUserName = async () => {
-    const response = await ajax("/me").then(null, (error) =>
-      console.log(error.response.data.errors)
-    );
-    if (response) setUser(response.data.account);
+    try {
+      const response = await ajax("/me");
+      await setUser(response.data.account);
+    } catch (error) {
+      console.error(error.response.data.error);
+    }
   };
 
   return (
@@ -47,6 +50,7 @@ const Index = () => {
         </div>
         <div>
           <TaskDescription {...{ description, dispatch, onAddTask }} />
+          <Divider />
           <TodoList {...{ todoList, onUpdateTask, edit, dispatch }}></TodoList>
         </div>
       </Main>

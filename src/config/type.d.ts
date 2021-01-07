@@ -10,3 +10,7 @@ export type ParamsDispatch = {
   type: string;
   formData: any;
 };
+export type Params = {
+  description?: string;
+  aborted?: boolean;
+};

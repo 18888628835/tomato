@@ -1,9 +1,10 @@
 import React, { FC } from "react";
-import { Checkbox, Divider } from "antd";
+import { Checkbox, Collapse } from "antd";
 import styled from "styled-components";
 import { DeleteOutlined, EnterOutlined } from "@ant-design/icons";
 import { SET_EDIT } from "../custom/actionType";
 import { ParamsDispatch } from "../../config/type";
+const { Panel } = Collapse;
 const Wrapper = styled.div`
   overflow-y: auto;
   max-height: 445px;
@@ -16,12 +17,11 @@ const Wrapper = styled.div`
       background-color: #fff3d2;
     }
     .describe {
-      margin-left: 20px;
+      margin-left: 16px;
     }
     .input {
       border: 0;
       height: 20px;
-      margin-right: 10px;
       outline: none;
       background-color: transparent;
       color: grey;
@@ -63,9 +63,11 @@ const Todo_list: FC<P> = (props) => {
           className="input"
           autoFocus
           defaultValue={description}
-          onKeyUp={(e) => {
+          onKeyUp={(e: React.KeyboardEvent) => {
             if (e.key === "Enter") {
-              onUpdateTask(id, { description: e.target.value });
+              onUpdateTask(id, {
+                description: (e.target as HTMLInputElement).value,
+              });
               dispatch({ type: SET_EDIT, formData: [] });
             }
           }}
@@ -120,8 +122,15 @@ const Todo_list: FC<P> = (props) => {
   return (
     <Wrapper>
       {data(getUnCompleted(todoList))}
-      {<Divider plain={true}>最近完成的</Divider>}
-      {data(getCompleted(todoList))}
+      <Collapse
+        style={{ border: "none", background: "none" }}
+        defaultActiveKey={["1"]}
+        ghost={true}
+      >
+        <Panel header="最近完成的" key="1">
+          {data(getCompleted(todoList))}
+        </Panel>
+      </Collapse>
     </Wrapper>
   );
 };

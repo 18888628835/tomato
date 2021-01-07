@@ -30,9 +30,9 @@ const Login = () => {
         account,
         password,
       });
-      history.push("/");
+      await history.push("/");
     } catch (error) {
-      alert(error.response.data.errors);
+      console.log(error);
     }
   };
   const onChange = (obj: Partial<LoginMessage>) => {

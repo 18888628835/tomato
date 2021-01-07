@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { Svg } from "./svg";
 const Wrapper = styled.header`
   padding: 0 64px;
   display: flex;
@@ -11,13 +12,18 @@ const Wrapper = styled.header`
     align-items: center;
   }
   .logo {
-    line-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 const Header: FC = (props) => {
   return (
     <Wrapper>
-      <div className="logo">logo</div>
+      <div className="logo">
+        <Svg iconName="fanqie" />
+        番茄闹钟
+      </div>
       {props.children}
     </Wrapper>
   );
