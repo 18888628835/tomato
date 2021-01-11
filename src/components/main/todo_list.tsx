@@ -54,7 +54,7 @@ const getCompleted = (data: any[]) => {
   });
 };
 
-const Todo_list: FC<P> = (props) => {
+const Todo_list: FC<P> = React.memo((props) => {
   const { todoList, onUpdateTask, dispatch, edit } = props;
   const editInput = (description: string, id: number) => {
     return (
@@ -133,6 +133,6 @@ const Todo_list: FC<P> = (props) => {
       </Collapse>
     </Wrapper>
   );
-};
+});
 
 export default Todo_list;

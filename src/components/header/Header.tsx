@@ -17,7 +17,7 @@ const Wrapper = styled.header`
     align-items: center;
   }
 `;
-const Header: FC = (props) => {
+const Header: FC = React.memo((props) => {
   return (
     <Wrapper>
       <div className="logo">
@@ -27,6 +27,6 @@ const Header: FC = (props) => {
       {props.children}
     </Wrapper>
   );
-};
+});
 
 export default Header;

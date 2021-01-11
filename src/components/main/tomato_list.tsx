@@ -1,8 +1,7 @@
-import dayjs from "dayjs";
 import React, { FC } from "react";
 import styled from "styled-components";
 type P = {
-  tomatoes: any[];
+  finishedGroup: any[];
 };
 const Wrapper = styled.section`
   padding: 15px;
@@ -21,7 +20,6 @@ const Wrapper = styled.section`
   .tomato_list {
     > li {
       display: flex;
-      justify-content: start;
       > span:nth-child(1) {
         color: #999999;
         font-size: 14px;
@@ -30,34 +28,10 @@ const Wrapper = styled.section`
     }
   }
 `;
-const getFinishedTomatoes = (tomatoes: any[]) => {
-  return tomatoes.filter(
-    (t) => t.ended_at !== null && t.description !== "" && t.aborted !== true
-  );
-};
-const TomatoList: FC<P> = (props) => {
-  const finishedTomatoes = getFinishedTomatoes(props.tomatoes).map((t) => {
-    t.startTime = dayjs(t.created_at).format("HH:mm");
-    t.endTime = dayjs(t.ended_at).format("HH:mm");
-    t.endDate = dayjs(t.ended_at).format("MM月DD日");
-    return t;
-  });
-  const getFinishedGroup = (finishedTomatoes: any[]) => {
-    const hashMap = new Map();
-    finishedTomatoes.forEach((t) => {
-      if (!hashMap.has(t.endDate)) {
-        hashMap.set(t.endDate, [t]);
-      } else {
-        hashMap.get(t.endDate).push(t);
-      }
-    });
-    return hashMap;
-  };
-
-  const finishedGroup = Array.from(getFinishedGroup(finishedTomatoes));
+const TomatoList: FC<P> = React.memo((props) => {
   return (
     <Wrapper>
-      {finishedGroup.map(([time, messageArray]) => {
+      {props.finishedGroup.map(([time, messageArray]) => {
         return (
           <div key={time}>
             <div className="tomato_title">
@@ -83,6 +57,6 @@ const TomatoList: FC<P> = (props) => {
       })}
     </Wrapper>
   );
-};
+});
 
 export default TomatoList;

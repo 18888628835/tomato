@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 const Wrap = styled.main`
-  padding: 20px 20px;
   overflow: hidden;
-  @media (min-width: 600px) {
-    display: flex;
+  display: flex;
+  padding: 20px;
+  justify-content: space-around;
+  @media (max-width: 600px) {
+    flex-direction: column;
     justify-content: space-between;
   }
   > div {
@@ -12,15 +14,18 @@ const Wrap = styled.main`
     border: 1px solid #3333;
     border-radius: 10px;
     padding: 20px;
-    flex: 1;
-    @media (min-width: 600px) {
-      margin-left: 10px;
+    @media (max-width: 600px) {
+      flex: 1;
     }
-    margin-bottom: 20px;
+    @media (min-width: 600px) {
+      width: calc(50% - 8px);
+    }
+
+    margin-bottom: 10px;
   }
 `;
-const Main = (props: { children: React.ReactNode }) => {
+const Main = React.memo((props: { children: React.ReactNode }) => {
   return <Wrap>{props.children}</Wrap>;
-};
+});
 
 export default Main;

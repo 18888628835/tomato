@@ -1,46 +1,31 @@
 import { Button, Divider, Input } from "antd";
-import React, { useEffect, useState } from "react";
-import ajax from "../../config/axiosConfig";
+import React, { FC, useEffect } from "react";
 import TomatoAction from "./tomatoAction";
-import { Params } from "../../config/type";
 import CloseWrapper from "../custom/close-wrapper";
 import TomatoList from "./tomato_list";
-const Tomatoes = () => {
+import { Params } from "../../config/type";
+type P = {
+  startTomatoes: () => void;
+  getUnFinishTomato: () => void;
+  unFinishTomato: { [key: string]: any };
+  setUnFinishTomato: (params: { [key: string]: any }) => void;
+  finishedGroup: [any, any][];
+  finishTomato: (params: Params) => void;
+};
+const Tomatoes: FC<P> = React.memo((props) => {
   let html;
-  const [tomatoes, setTomatoes] = useState([]);
-  const [unFinishTomato, setUnFinishTomato] = useState<any>({});
-  const getUnFinishTomato = async () => {
-    try {
-      const response = await ajax.get("tomatoes");
-      setTomatoes(response.data.resources);
-      const unFinish = response.data.resources.filter((t: any) => {
-        return !t.description && !t.ended_at && !t.aborted;
-      })[0];
-      setUnFinishTomato(unFinish);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const finishTomato = async (params: Params) => {
-    await ajax
-      .put(`tomatoes/${unFinishTomato.id}`, {
-        ...params,
-        ended_at: new Date().toISOString(),
-      })
-      .then(null, (error) => {
-        throw new Error(error);
-      });
-    getUnFinishTomato();
-  };
+  const {
+    startTomatoes,
+    getUnFinishTomato,
+    unFinishTomato,
+    setUnFinishTomato,
+    finishedGroup,
+    finishTomato,
+  } = props;
   useEffect(() => {
     getUnFinishTomato(); //第一次的时候就获取未完成的番茄，找到没有完成的番茄闹钟
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const startTomatoes = async () => {
-    await ajax.post("tomatoes", { duration: 1500000 }).then(null, (error) => {
-      throw new Error(error);
-    });
-    getUnFinishTomato();
-  };
   if (unFinishTomato === undefined) {
     html = (
       <Button
@@ -56,6 +41,7 @@ const Tomatoes = () => {
     const startedAt = Date.parse(unFinishTomato.started_at);
     const duration = unFinishTomato.duration;
     const timeNow = new Date().getTime();
+    console.log(startedAt);
 
     if (timeNow - startedAt > duration) {
       html = (
@@ -94,9 +80,10 @@ const Tomatoes = () => {
     <>
       {html}
       <Divider />
-      <TomatoList {...{ tomatoes: tomatoes }} />
+      {props.children}
+      <TomatoList {...{ finishedGroup }} />
     </>
   );
-};
+});
 
 export default Tomatoes;

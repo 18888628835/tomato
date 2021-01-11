@@ -38,8 +38,9 @@ const SignUp = () => {
         password,
         password_confirmation,
       });
+      alert("注册成功");
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.errors.account);
     }
   };
   return (

@@ -4,21 +4,19 @@ import React, { FC } from "react";
 import { Link } from "react-router-dom";
 type P = {
   user: string;
-  onLogout: (prams: string) => void;
   className: string;
 };
 
-const UserMenu: FC<P> = (props) => {
+const UserMenu: FC<P> = React.memo((props) => {
   const menu = (
     <Menu>
-      <Menu.Item danger>
+      <Menu.Item danger={true}>
         <span
           onClick={() => {
-            props.onLogout("");
             localStorage.setItem("x-token", "");
           }}
         >
-          注销
+          <Link to="login">注销</Link>
         </span>
       </Menu.Item>
     </Menu>
@@ -38,6 +36,6 @@ const UserMenu: FC<P> = (props) => {
       )}
     </div>
   );
-};
+});
 
 export default UserMenu;

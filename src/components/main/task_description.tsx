@@ -8,7 +8,7 @@ type P = {
   dispatch: (params: ParamsDispatch) => void;
   onAddTask: () => void;
 };
-const Task_description: FC<P> = (props) => {
+const Task_description: FC<P> = React.memo((props) => {
   const { description, dispatch, onAddTask } = props;
   return (
     <>
@@ -27,6 +27,6 @@ const Task_description: FC<P> = (props) => {
       />
     </>
   );
-};
+});
 
 export default Task_description;

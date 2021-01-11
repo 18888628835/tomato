@@ -8,11 +8,12 @@ type P = {
   duration: number;
   finishTomato: (params: Params) => void;
 };
-const TomatoAction: FC<P> = (props) => {
-  const [state, setState] = useState(props.time);
-  let seconds = Math.floor((state / 1000) % 60);
-  let min = Math.floor(state / 1000 / 60);
-  let title = `${min < 10 ? `0${min}` : min}:${
+const TomatoAction: FC<P> = React.memo((props) => {
+  const [state, setState] = useState(Math.floor(props.time));
+  let seconds, min, title;
+  seconds = Math.floor((state / 1000) % 60);
+  min = Math.floor(state / 1000 / 60);
+  title = `${min < 10 ? `0${min}` : min}:${
     seconds < 10 ? `0${seconds}` : seconds
   }`;
   const percent = (1 - state / props.duration) * 100;
@@ -38,6 +39,6 @@ const TomatoAction: FC<P> = (props) => {
       <span>{title}</span>
     </CloseWrapper>
   );
-};
+});
 
 export default TomatoAction;
