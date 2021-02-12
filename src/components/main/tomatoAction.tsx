@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from "react";
-import { Params } from "../../config/type";
+import { Params } from "../config/type";
 import CloseWrapper from "../custom/close-wrapper";
 
 type P = {

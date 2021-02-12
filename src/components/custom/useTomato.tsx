@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ajax from "../../config/axiosConfig";
-import { Params } from "../../config/type";
+import ajax from "../config/axiosConfig";
+import { Params } from "../config/type";
 import dayjs from "dayjs";
 const useTomato = () => {
   const [tomatoes, setTomatoes] = useState([]);

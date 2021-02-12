@@ -3,7 +3,7 @@ import { Checkbox, Collapse } from "antd";
 import styled from "styled-components";
 import { DeleteOutlined, EnterOutlined } from "@ant-design/icons";
 import { SET_EDIT } from "../custom/actionType";
-import { ParamsDispatch } from "../../config/type";
+import { ParamsDispatch } from "../config/type";
 const { Panel } = Collapse;
 const Wrapper = styled.div`
   overflow-y: auto;

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Input } from "antd";
 import { EnterOutlined } from "@ant-design/icons";
 import { SET_DESCRIPTION } from "../custom/actionType";
-import { ParamsDispatch } from "../../config/type";
+import { ParamsDispatch } from "../config/type";
 type P = {
   description: string;
   dispatch: (params: ParamsDispatch) => void;

@@ -2,7 +2,7 @@ import axios from "axios";
 const appID = "23428m5P3TFxUWgDpjgfAkNo";
 const appSecret = "7sSqdQDvUrGrBTBi7FDCeevi";
 
-const instance = axios.create({
+const ajax = axios.create({
   baseURL: "https://gp-server.hunger-valley.com/",
   headers: {
     "t-app-id": appID,
@@ -11,7 +11,7 @@ const instance = axios.create({
 });
 
 // Add a request interceptor
-instance.interceptors.request.use(
+ajax.interceptors.request.use(
   function (config) {
     const xToken = localStorage.getItem("x-token");
     if (xToken) {
@@ -25,7 +25,7 @@ instance.interceptors.request.use(
 );
 
 // Add a response interceptor
-instance.interceptors.response.use(
+ajax.interceptors.response.use(
   function (response) {
     // Do something with response data
     if (response.headers["x-token"]) {
@@ -38,4 +38,4 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-export default instance;
+export default ajax;

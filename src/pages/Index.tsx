@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ajax from "../config/axiosConfig";
+import ajax from "../components/config/axiosConfig";
 import Header from "../components/header/Header";
 import Main from "../components/main/main";
 import TaskDescription from "../components/main/task_description";

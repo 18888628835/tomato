@@ -3,8 +3,9 @@ import { Button, Checkbox, Form, Input } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
-import { LoginMessage } from "../config/type";
-import ajax from "../config/axiosConfig";
+import { LoginMessage } from "../components/config/type";
+import ajax from "../components/config/axiosConfig";
+
 const Main = styled.main`
   max-width: 300px;
   margin: 0 auto;

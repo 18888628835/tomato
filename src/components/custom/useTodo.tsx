@@ -1,7 +1,8 @@
 import { useReducer } from "react";
-import ajax from "../../config/axiosConfig";
+import ajax from "../config/axiosConfig";
 import { reducer, initialState } from "./reducer";
 import { ADD_TASK, UPDATE_TASK, SET_DESCRIPTION } from "../custom/actionType";
+
 const useTodo = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { edit, todoList, description } = state;

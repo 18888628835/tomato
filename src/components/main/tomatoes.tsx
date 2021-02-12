@@ -3,7 +3,7 @@ import React, { FC, useEffect } from "react";
 import TomatoAction from "./tomatoAction";
 import CloseWrapper from "../custom/close-wrapper";
 import TomatoList from "./tomato_list";
-import { Params } from "../../config/type";
+import { Params } from "../config/type";
 type P = {
   startTomatoes: () => void;
   getUnFinishTomato: () => void;

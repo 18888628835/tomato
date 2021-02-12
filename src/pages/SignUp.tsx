@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Input, Button, Space } from "antd";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import ajax from "../config/axiosConfig";
-import { Registration } from "../config/type";
+import ajax from "../components/config/axiosConfig";
+import { Registration } from "../components/config/type";
 import { UserOutlined } from "@ant-design/icons";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 
