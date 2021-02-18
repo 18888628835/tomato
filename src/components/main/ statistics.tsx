@@ -23,6 +23,7 @@ const Section = styled.section`
       :hover {
         background-color: #f0eeee;
       }
+      padding: 16px 24px;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -53,8 +54,8 @@ const Statistics: FC<P> = React.memo((props) => {
   });
   const list = [
     ["统计历史", nowMonth + 1 + "月累积", monthFinishTomatoes.length],
-    ["番茄历史", "累积完成番茄", props.finishedTomatoes.length],
-    ["任务历史", "累积完成的任务", finishTodo.length],
+    ["番茄历史", "完成番茄", props.finishedTomatoes.length],
+    ["任务历史", "完成任务", finishTodo.length],
   ];
   return (
     <Section>

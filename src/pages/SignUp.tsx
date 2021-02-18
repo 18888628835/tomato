@@ -10,13 +10,14 @@ import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 const Wrap = styled.section`
   display: flex;
   flex-direction: column;
-  max-width: 385px;
+  max-width: 345px;
   margin: 0 auto;
   > h1 {
     text-align: center;
   }
   .signUp {
     width: 100%;
+    margin-bottom: 20px;
   }
 `;
 const SignUp = () => {
@@ -76,12 +77,12 @@ const SignUp = () => {
           }}
         />
         <Button className="signUp" onClick={onSubmit}>
-          注册
+          完成注册
         </Button>
       </Space>
       <span>
         如果您有账号，请
-        <Link to="/login">
+        <Link to="/">
           <Button type="link">登录</Button>
         </Link>
       </span>

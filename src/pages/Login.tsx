@@ -15,6 +15,7 @@ const Main = styled.main`
   .login-button {
     > button {
       width: 100%;
+      margin-bottom: 20px;
     }
   }
 `;
@@ -31,7 +32,7 @@ const Login = () => {
         account,
         password,
       });
-      await history.push("/");
+      await history.push("/index");
     } catch (error) {
       console.log(error);
     }

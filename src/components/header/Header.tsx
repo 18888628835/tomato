@@ -16,6 +16,9 @@ const Wrapper = styled.header`
     justify-content: center;
     align-items: center;
   }
+  .loginOut {
+    border: 1px solid red;
+  }
 `;
 const Header: FC = React.memo((props) => {
   return (

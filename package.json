@@ -32,6 +32,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage":"https://18888628835.github.io/tomato/",
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -30,10 +30,7 @@ const CloseWrapper: FC<{ finishTomato: (params: any) => void }> = (props) => {
         title="确定要删除这个番茄吗?"
         onConfirm={() => {
           props.finishTomato({ aborted: true });
-          message.error("删除成功");
-        }}
-        onCancel={() => {
-          message.error("撤销删除");
+          message.success("删除成功");
         }}
         okText="删除"
         cancelText="撤销"
