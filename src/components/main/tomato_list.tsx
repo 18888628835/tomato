@@ -36,7 +36,7 @@ const TomatoList: FC<P> = React.memo((props) => {
           <div key={time}>
             <div className="tomato_title">
               <span>{time}</span>
-              <span>本日共完成{messageArray.length}个番茄</span>
+              <span>本日完成{messageArray.length}个番茄</span>
             </div>
             <ul className="tomato_list">
               {messageArray.map((message: any) => {
