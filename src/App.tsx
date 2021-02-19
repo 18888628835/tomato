@@ -12,7 +12,7 @@ function App() {
         <Suspense
           fallback={
             <div className="global-spin">
-              <Spin tip="正在加载中，请稍候..."></Spin>
+              <Spin tip="正在加载,请稍候..."></Spin>
             </div>
           }
         >
