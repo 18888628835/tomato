@@ -41,7 +41,7 @@ const SignUp = () => {
       });
       alert("注册成功");
     } catch (error) {
-      alert(error.response.data.errors.account);
+      alert(error.response.data.errors.account[0]);
     }
   };
   return (

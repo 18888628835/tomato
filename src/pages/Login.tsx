@@ -34,7 +34,7 @@ const Login = () => {
       });
       await history.push("/index");
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.errors);
     }
   };
   const onChange = (obj: Partial<LoginMessage>) => {
