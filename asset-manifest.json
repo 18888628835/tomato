@@ -1,0 +1,39 @@
+{
+  "files": {
+    "static/js/0.f079984d.chunk.js": "/tomato/static/js/0.f079984d.chunk.js",
+    "static/js/0.f079984d.chunk.js.map": "/tomato/static/js/0.f079984d.chunk.js.map",
+    "static/js/1.2e442adc.chunk.js": "/tomato/static/js/1.2e442adc.chunk.js",
+    "static/js/1.2e442adc.chunk.js.map": "/tomato/static/js/1.2e442adc.chunk.js.map",
+    "main.css": "/tomato/static/css/main.e501313e.chunk.css",
+    "main.js": "/tomato/static/js/main.8b686abb.chunk.js",
+    "main.js.map": "/tomato/static/js/main.8b686abb.chunk.js.map",
+    "runtime-main.js": "/tomato/static/js/runtime-main.dd25e3e2.js",
+    "runtime-main.js.map": "/tomato/static/js/runtime-main.dd25e3e2.js.map",
+    "static/js/4.b73e0990.chunk.js": "/tomato/static/js/4.b73e0990.chunk.js",
+    "static/js/4.b73e0990.chunk.js.map": "/tomato/static/js/4.b73e0990.chunk.js.map",
+    "static/css/5.b00201c5.chunk.css": "/tomato/static/css/5.b00201c5.chunk.css",
+    "static/js/5.f2b36bd9.chunk.js": "/tomato/static/js/5.f2b36bd9.chunk.js",
+    "static/js/5.f2b36bd9.chunk.js.map": "/tomato/static/js/5.f2b36bd9.chunk.js.map",
+    "static/js/6.811a9f2a.chunk.js": "/tomato/static/js/6.811a9f2a.chunk.js",
+    "static/js/6.811a9f2a.chunk.js.map": "/tomato/static/js/6.811a9f2a.chunk.js.map",
+    "static/js/7.5363ebbe.chunk.js": "/tomato/static/js/7.5363ebbe.chunk.js",
+    "static/js/7.5363ebbe.chunk.js.map": "/tomato/static/js/7.5363ebbe.chunk.js.map",
+    "static/js/8.58a3eef2.chunk.js": "/tomato/static/js/8.58a3eef2.chunk.js",
+    "static/js/8.58a3eef2.chunk.js.map": "/tomato/static/js/8.58a3eef2.chunk.js.map",
+    "static/js/9.cf7413bf.chunk.js": "/tomato/static/js/9.cf7413bf.chunk.js",
+    "static/js/9.cf7413bf.chunk.js.map": "/tomato/static/js/9.cf7413bf.chunk.js.map",
+    "static/js/10.2a1e2bec.chunk.js": "/tomato/static/js/10.2a1e2bec.chunk.js",
+    "static/js/10.2a1e2bec.chunk.js.map": "/tomato/static/js/10.2a1e2bec.chunk.js.map",
+    "index.html": "/tomato/index.html",
+    "static/css/5.b00201c5.chunk.css.map": "/tomato/static/css/5.b00201c5.chunk.css.map",
+    "static/css/main.e501313e.chunk.css.map": "/tomato/static/css/main.e501313e.chunk.css.map",
+    "static/js/5.f2b36bd9.chunk.js.LICENSE.txt": "/tomato/static/js/5.f2b36bd9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dd25e3e2.js",
+    "static/css/5.b00201c5.chunk.css",
+    "static/js/5.f2b36bd9.chunk.js",
+    "static/css/main.e501313e.chunk.css",
+    "static/js/main.8b686abb.chunk.js"
+  ]
+}
